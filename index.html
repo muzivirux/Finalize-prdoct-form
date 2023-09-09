@@ -604,6 +604,99 @@
     <!-- end of Footer -->
 
     <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxxCBNeIApJdw2KodcPSpRosJfLuIhWoha-xf_657kGyl93_m4qVU4BQM-meFgg-b8B9Q/exec";
+      const form = document.getElementById("FinishedproductForm");
+
+      // modal javascript
+      // Get the modal element, the close button, and the close button inside the modal
+      const modal = document.getElementById("myModal");
+      const closeBtn = document.querySelector(".close");
+      const modalCloseBtn = document.getElementById("closeBtn");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        modal.style.display = "block";
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            if (!areAllFieldsHidden()) hideSpinner(); // Hide the spinner
+
+            document.getElementById("modal-message").textContent = "Success!";
+          })
+          .catch((error) => {
+            hideSpinner(); // Hide the spinner
+            document.getElementById("modal-message").textContent =
+              "Error! " + error.message;
+          });
+      });
+      // Close the modal when the close button is clicked
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+      // Close the modal when the close button inside the modal is clicked
+      modalCloseBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+    </script>
+
+    <!-- reseting form after submitting -->
+    <script>
+      document
+        .getElementById("FinishedproductForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          this.reset();
+        });
+    </script>
+    <!-- end of for reseting after submitting -->
+
+    <script>
+      // Function to show the spinner
+      function showSpinner() {
+        const spinnerContainer = document.querySelector(".spinner-container");
+        spinnerContainer.style.display = "flex";
+        modal.style.display = "none";
+      }
+
+      // Function to hide the spinner
+      function hideSpinner() {
+        const spinnerContainer = document.querySelector(".spinner-container");
+        spinnerContainer.style.display = "none";
+        modal.style.display = "block";
+      }
+
+      // Function to handle form submission
+      function handleSubmit(event) {
+        event.preventDefault();
+        showSpinner(); // Show the spinner
+      }
+
+      // Add event listener to form submit
+
+      form.addEventListener("submit", handleSubmit);
+    </script>
+    <!-- End of spinner -->
+
+    <!-- check time validations -->
+    <script>
+      // Get the input element
+      var durationInput = document.getElementById("availability-duration");
+      durationInput.addEventListener("change", function () {
+        durationInput.setCustomValidity("");
+        var value = durationInput.value;
+        var hours = parseInt(value.split(":")[0]);
+        var minutes = parseInt(value.split(":")[1]);
+        if (isNaN(hours) || isNaN(minutes) || minutes >= 60) {
+          durationInput.setCustomValidity(
+            "Please enter a valid duration in HH:MM format with hours under 23 and minutes under 60."
+          );
+        }
+      });
+    </script>
+
+    <!-- Hidden functionalities are here -->
+    <script>
       // Function to toggle the required attribute of input elements
       function toggleRequired(inputs, isRequired) {
         inputs.forEach((input) => {
@@ -629,39 +722,16 @@
         });
       }
 
-      // Function to show the spinner
-      function showSpinner() {
-        const spinnerContainer = document.querySelector(".spinner-container");
-        spinnerContainer.style.display = "flex";
-        modal.style.display = "none";
-      }
-
-      // Function to hide the spinner
-      function hideSpinner() {
-        const spinnerContainer = document.querySelector(".spinner-container");
-        spinnerContainer.style.display = "none";
-        modal.style.display = "block";
-      }
-
-      // Function to handle form submission
-      function handleSubmit(event) {
-        event.preventDefault();
-
+      // Add an event listener for when the form is submitted
+      document.querySelector("form").addEventListener("submit", function (e) {
         if (areAllFieldsHidden()) {
+          spinnerContainer.style.display = "none";
+          e.preventDefault(); // Prevent form submission
           alert(
             "Please fill in at least one field before submitting the form."
           );
-          return; // Don't proceed with submission
         }
-
-        showSpinner(); // Show the spinner
-        form.submit(); // Submit the form
-      }
-
-      // Add an event listener for when the form is submitted
-      document
-        .getElementById("FinishedproductForm")
-        .addEventListener("submit", handleSubmit);
+      });
 
       // Toggle content visibility and required attribute on click
       function toggleContentAndRequired() {
@@ -691,6 +761,37 @@
       window.addEventListener("load", () => {
         hideContentBetweenHeadings();
         toggleContentAndRequired();
+      });
+    </script>
+    <script>
+      // Function to check if all input fields are hidden
+      function areAllFieldsHidden() {
+        const sections = document.querySelectorAll(".section");
+        return [...sections].every((section) => {
+          const content = section.querySelector(".section-content");
+          return content.style.display === "none";
+        });
+      }
+
+      // Function to hide the modal
+      function hideModal() {
+        const modal = document.getElementById("myModal");
+        modal.style.display = "none";
+      }
+
+      // Add an event listener for when the form is submitted
+      document.querySelector("form").addEventListener("submit", function (e) {
+        if (areAllFieldsHidden()) {
+          e.preventDefault(); // Prevent form submission
+          alert(
+            "Please fill in at least one field before submitting the form."
+          );
+
+          // Hide the spinner, message, and modal
+          const spinnerContainer = document.querySelector(".spinner-container");
+          spinnerContainer.style.display = "none";
+          hideModal();
+        }
       });
     </script>
   </body>
