@@ -219,11 +219,13 @@
             <div class="wrapper">
               <label for="RSD">Time (HH:MM)</label>
               <input
-                type="time"
+                type="text"
                 id="gen1diesel"
                 name="Time(HH:MM) peeler log"
                 placeholder="Enter Time"
                 min="0"
+                class="time-input"
+                id="availability-duration"
               />
             </div>
             <div class="wrapper">
@@ -376,11 +378,10 @@
               />
             </div>
           </div>
-        </div>
-      </div>
-      <div class="section">
+       
+      
         <h2>Blancher-1</h2>
-        <div class="section-content">
+        
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
@@ -425,11 +426,10 @@
               />
             </div>
           </div>
-        </div>
-      </div>
-      <div class="section">
+       
+     
         <h2>Blancher-2</h2>
-        <div class="section-content">
+       
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
@@ -474,11 +474,10 @@
               />
             </div>
           </div>
-        </div>
-      </div>
-      <div class="section">
+        
+     
         <h2>Dryer</h2>
-        <div class="section-content">
+        
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
@@ -523,11 +522,10 @@
               />
             </div>
           </div>
-        </div>
-      </div>
-      <div class="section">
+        
+      
         <h2>Fryer</h2>
-        <div class="section-content">
+        
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
@@ -793,6 +791,62 @@
           hideModal();
         }
       });
+    </script>
+    <script>
+    // Function to validate the duration input
+    function validateDurationInput(inputElement) {
+        inputElement.addEventListener('change', function () {
+            inputElement.setCustomValidity('');
+            var value = inputElement.value;
+            var timeParts = value.split(':');
+
+            // Check if the input is in the format HH:MM or HH
+            if (timeParts.length === 2) {
+                var hours = parseInt(timeParts[0]);
+                var minutes = parseInt(timeParts[1]);
+
+                if (isNaN(hours) || isNaN(minutes) || hours > 24 || (hours === 24 && minutes !== 0) || minutes >= 60) {
+                    inputElement.setCustomValidity('Please enter a valid duration in HH:MM format with hours under 24 and minutes under 60.');
+                }
+            } else if (timeParts.length === 1) {
+                var hoursOnly = parseInt(timeParts[0]);
+
+                if (isNaN(hoursOnly) || hoursOnly > 24) {
+                    inputElement.setCustomValidity('Please enter a valid duration in HH:MM format with hours under 24.');
+                }
+            } else {
+                inputElement.setCustomValidity('Please enter a valid duration in HH:MM format or hours only.');
+            }
+        });
+    }
+
+    // Get the input elements and validate them
+    var durationInputs = document.querySelectorAll('.time-input');
+    durationInputs.forEach(function (input) {
+        validateDurationInput(input);
+    });
+
+
+
+
+
+
+    // auto add colon : between HH and MM
+    document.addEventListener('DOMContentLoaded', function () {
+        const timeInputs = document.querySelectorAll('.time-input');
+
+        timeInputs.forEach(function (inputElement) {
+            inputElement.addEventListener('input', function (event) {
+                const inputValue = event.target.value.trim();
+
+                // Check if the input value has reached 2 characters (HH)
+                if (inputValue.length === 2 && !inputValue.includes(':')) {
+                    // Add the colon ':' after the HH part
+                    event.target.value = inputValue + ':';
+                }
+            });
+        });
+    });
     </script>
   </body>
 </html>
