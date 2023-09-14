@@ -139,7 +139,7 @@
             <div class="wrapper">
               <label for="RSD">Hold Product (kg)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1diesel"
                 name="Hold Product (kg)"
                 placeholder="Enter Hold Product (kg)"
@@ -163,29 +163,29 @@
         <div class="section-content">
           <div class="RSD">
             <div class="wrapper">
-              <label for="RSD">Line stop</label>
+              <label for="RSD">Line Start</label>
 
               <input
                 type="text"
                 id="gen1Units"
-                name="Line stop"
+                name="Line Start"
                 placeholder="Enter Line stop"
               />
             </div>
 
             <div class="wrapper">
-              <label for="RSD">Line Start</label>
+              <label for="RSD">Line Stop</label>
               <input
                 type="text"
                 id="gen1diesel"
-                name="Line Start"
+                name="Line stop"
                 placeholder="Enter Line Start"
               />
             </div>
             <div class="wrapper">
               <label for="RSD">Downtime(m)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1diesel"
                 name="Downtime(m)"
                 placeholder="Enter Downtime(m)"
@@ -221,17 +221,19 @@
             <div class="wrapper">
               <label for="RSD">Time (HH:MM)</label>
               <input
-                type="time"
+                type="text"
                 id="gen1diesel"
                 name="Time(HH:MM) peeler log"
                 placeholder="Enter Time"
                 min="0"
+                class="time-input"
+                id="availability-duration"
               />
             </div>
             <div class="wrapper">
               <label for="RSD">Gate open %</label>
               <input
-                type="text"
+                type="number"
                 id="gen1diesel"
                 name="Gate open % peeler log"
                 placeholder="Enter Gate open %"
@@ -242,7 +244,7 @@
             <div class="wrapper">
               <label for="RSD">Speed(Hz)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1diesel"
                 name="Speed(Hz) peeler log"
                 placeholder="Enter Speed(Hz)"
@@ -266,7 +268,7 @@
             <div class="wrapper">
               <label for="RSD">Steam pressure</label>
               <input
-                type="text"
+                type="number"
                 id="gen1diesel"
                 name="Steam pressure peeler log"
                 placeholder="Enter Steam pressure"
@@ -371,23 +373,22 @@
             <div class="wrapper">
               <label for="RSD">Hopper speed(Hz)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1Units"
                 name="Hopper speed(Hz)"
                 placeholder="Enter Hopper speed(Hz)"
               />
             </div>
           </div>
-        </div>
-      </div>
-      <div class="section">
+       
+      
         <h2>Blancher-1</h2>
-        <div class="section-content">
+        
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1Units"
                 name="Time(min) for Blancher-1"
                 placeholder="Enter Time(min)"
@@ -397,7 +398,7 @@
             <div class="wrapper">
               <label for="RSD">Temperature(^C)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1Units"
                 name="Temperature(^C) for Blancher-1"
                 placeholder="Enter Temperature(^C)"
@@ -417,26 +418,17 @@
               />
             </div>
 
-            <div class="wrapper">
-              <label for="RSD">Avg. Blancher -1 w. loss %</label>
-              <input
-                type="text"
-                id="gen1Units"
-                name="Avg. Blancher -1 w. loss %"
-                placeholder="Enter Avg. Blancher -1 w. loss %"
-              />
-            </div>
+          
           </div>
-        </div>
-      </div>
-      <div class="section">
+       
+     
         <h2>Blancher-2</h2>
-        <div class="section-content">
+       
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1Units"
                 name="Time(min) for Blancher-2"
                 placeholder="Enter Time(min)"
@@ -446,7 +438,7 @@
             <div class="wrapper">
               <label for="RSD">Temperature(^C)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1Units"
                 name="Temperature(^C) for Blancher-2"
                 placeholder="Enter Temperature(^C)"
@@ -466,26 +458,17 @@
               />
             </div>
 
-            <div class="wrapper">
-              <label for="RSD">Avg. Blancher -2 w. loss %</label>
-              <input
-                type="text"
-                id="gen1Units"
-                name="Avg. Blancher -2 w. loss %"
-                placeholder="Enter Avg. Blancher -2 w. loss %"
-              />
-            </div>
+           
           </div>
-        </div>
-      </div>
-      <div class="section">
+        
+     
         <h2>Dryer</h2>
-        <div class="section-content">
+        
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1Units"
                 name="Time(min) for Dryer"
                 placeholder="Enter Time(min)"
@@ -495,7 +478,7 @@
             <div class="wrapper">
               <label for="RSD">Temperature(^C)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1Units"
                 name="Temperature(^C) for Dryer"
                 placeholder="Enter Temperature(^C)"
@@ -515,26 +498,17 @@
               />
             </div>
 
-            <div class="wrapper">
-              <label for="RSD">Avg. Dryer w. loss % </label>
-              <input
-                type="text"
-                id="gen1Units"
-                name="Avg. Dryer  w. loss %"
-                placeholder="Enter Avg. Dryer  w. loss %"
-              />
-            </div>
+           
           </div>
-        </div>
-      </div>
-      <div class="section">
+        
+      
         <h2>Fryer</h2>
-        <div class="section-content">
+        
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1Units"
                 name="Time(min) for Fryer"
                 placeholder="Enter Time(min)"
@@ -544,7 +518,7 @@
             <div class="wrapper">
               <label for="RSD">Temperature(^C)</label>
               <input
-                type="text"
+                type="number"
                 id="gen1Units"
                 name="Temperature(^C) for Fryer"
                 placeholder="Enter Temperature(^C)"
@@ -564,15 +538,7 @@
               />
             </div>
 
-            <div class="wrapper">
-              <label for="RSD">Avg. Fryer w. loss % </label>
-              <input
-                type="text"
-                id="gen1Units"
-                name="Avg. Dryer  w. loss %"
-                placeholder="Enter Avg. Fryer  w. loss %"
-              />
-            </div>
+          
           </div>
         </div>
       </div>
@@ -795,6 +761,62 @@
           hideModal();
         }
       });
+    </script>
+    <script>
+    // Function to validate the duration input
+    function validateDurationInput(inputElement) {
+        inputElement.addEventListener('change', function () {
+            inputElement.setCustomValidity('');
+            var value = inputElement.value;
+            var timeParts = value.split(':');
+
+            // Check if the input is in the format HH:MM or HH
+            if (timeParts.length === 2) {
+                var hours = parseInt(timeParts[0]);
+                var minutes = parseInt(timeParts[1]);
+
+                if (isNaN(hours) || isNaN(minutes) || hours > 24 || (hours === 24 && minutes !== 0) || minutes >= 60) {
+                    inputElement.setCustomValidity('Please enter a valid duration in HH:MM format with hours under 24 and minutes under 60.');
+                }
+            } else if (timeParts.length === 1) {
+                var hoursOnly = parseInt(timeParts[0]);
+
+                if (isNaN(hoursOnly) || hoursOnly > 24) {
+                    inputElement.setCustomValidity('Please enter a valid duration in HH:MM format with hours under 24.');
+                }
+            } else {
+                inputElement.setCustomValidity('Please enter a valid duration in HH:MM format or hours only.');
+            }
+        });
+    }
+
+    // Get the input elements and validate them
+    var durationInputs = document.querySelectorAll('.time-input');
+    durationInputs.forEach(function (input) {
+        validateDurationInput(input);
+    });
+
+
+
+
+
+
+    // auto add colon : between HH and MM
+    document.addEventListener('DOMContentLoaded', function () {
+        const timeInputs = document.querySelectorAll('.time-input');
+
+        timeInputs.forEach(function (inputElement) {
+            inputElement.addEventListener('input', function (event) {
+                const inputValue = event.target.value.trim();
+
+                // Check if the input value has reached 2 characters (HH)
+                if (inputValue.length === 2 && !inputValue.includes(':')) {
+                    // Add the colon ':' after the HH part
+                    event.target.value = inputValue + ':';
+                }
+            });
+        });
+    });
     </script>
 
     <!-- getting value from sheet -->
