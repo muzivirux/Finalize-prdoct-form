@@ -20,9 +20,10 @@
     <div id="line"></div>
     <form id="FinishedproductForm">
       <!-- Wapda -->
-      <p>
+      <!-- <p>
         Value from Google Sheet: <input type="text" id="sheetValue" readonly />
-      </p>
+      </p> -->
+      <p>Value from Google Sheet: <span id="sheetValue"></span></p>
       <!-- second three -->
       <div class="section">
         <h2>Finished Product Status</h2>
@@ -380,10 +381,9 @@
               />
             </div>
           </div>
-       
-      
-        <h2>Blancher-1</h2>
-        
+
+          <h2>Blancher-1</h2>
+
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
@@ -417,13 +417,10 @@
                 step=".1"
               />
             </div>
-
-          
           </div>
-       
-     
-        <h2>Blancher-2</h2>
-       
+
+          <h2>Blancher-2</h2>
+
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
@@ -457,13 +454,10 @@
                 step=".1"
               />
             </div>
-
-           
           </div>
-        
-     
-        <h2>Dryer</h2>
-        
+
+          <h2>Dryer</h2>
+
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
@@ -497,13 +491,10 @@
                 step=".1"
               />
             </div>
-
-           
           </div>
-        
-      
-        <h2>Fryer</h2>
-        
+
+          <h2>Fryer</h2>
+
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
@@ -537,8 +528,6 @@
                 step=".1"
               />
             </div>
-
-          
           </div>
         </div>
       </div>
@@ -763,64 +752,87 @@
       });
     </script>
     <script>
-    // Function to validate the duration input
-    function validateDurationInput(inputElement) {
-        inputElement.addEventListener('change', function () {
-            inputElement.setCustomValidity('');
-            var value = inputElement.value;
-            var timeParts = value.split(':');
+      // Function to validate the duration input
+      function validateDurationInput(inputElement) {
+        inputElement.addEventListener("change", function () {
+          inputElement.setCustomValidity("");
+          var value = inputElement.value;
+          var timeParts = value.split(":");
 
-            // Check if the input is in the format HH:MM or HH
-            if (timeParts.length === 2) {
-                var hours = parseInt(timeParts[0]);
-                var minutes = parseInt(timeParts[1]);
+          // Check if the input is in the format HH:MM or HH
+          if (timeParts.length === 2) {
+            var hours = parseInt(timeParts[0]);
+            var minutes = parseInt(timeParts[1]);
 
-                if (isNaN(hours) || isNaN(minutes) || hours > 24 || (hours === 24 && minutes !== 0) || minutes >= 60) {
-                    inputElement.setCustomValidity('Please enter a valid duration in HH:MM format with hours under 24 and minutes under 60.');
-                }
-            } else if (timeParts.length === 1) {
-                var hoursOnly = parseInt(timeParts[0]);
-
-                if (isNaN(hoursOnly) || hoursOnly > 24) {
-                    inputElement.setCustomValidity('Please enter a valid duration in HH:MM format with hours under 24.');
-                }
-            } else {
-                inputElement.setCustomValidity('Please enter a valid duration in HH:MM format or hours only.');
+            if (
+              isNaN(hours) ||
+              isNaN(minutes) ||
+              hours > 24 ||
+              (hours === 24 && minutes !== 0) ||
+              minutes >= 60
+            ) {
+              inputElement.setCustomValidity(
+                "Please enter a valid duration in HH:MM format with hours under 24 and minutes under 60."
+              );
             }
+          } else if (timeParts.length === 1) {
+            var hoursOnly = parseInt(timeParts[0]);
+
+            if (isNaN(hoursOnly) || hoursOnly > 24) {
+              inputElement.setCustomValidity(
+                "Please enter a valid duration in HH:MM format with hours under 24."
+              );
+            }
+          } else {
+            inputElement.setCustomValidity(
+              "Please enter a valid duration in HH:MM format or hours only."
+            );
+          }
         });
-    }
+      }
 
-    // Get the input elements and validate them
-    var durationInputs = document.querySelectorAll('.time-input');
-    durationInputs.forEach(function (input) {
+      // Get the input elements and validate them
+      var durationInputs = document.querySelectorAll(".time-input");
+      durationInputs.forEach(function (input) {
         validateDurationInput(input);
-    });
+      });
 
-
-
-
-
-
-    // auto add colon : between HH and MM
-    document.addEventListener('DOMContentLoaded', function () {
-        const timeInputs = document.querySelectorAll('.time-input');
+      // auto add colon : between HH and MM
+      document.addEventListener("DOMContentLoaded", function () {
+        const timeInputs = document.querySelectorAll(".time-input");
 
         timeInputs.forEach(function (inputElement) {
-            inputElement.addEventListener('input', function (event) {
-                const inputValue = event.target.value.trim();
+          inputElement.addEventListener("input", function (event) {
+            const inputValue = event.target.value.trim();
 
-                // Check if the input value has reached 2 characters (HH)
-                if (inputValue.length === 2 && !inputValue.includes(':')) {
-                    // Add the colon ':' after the HH part
-                    event.target.value = inputValue + ':';
-                }
-            });
+            // Check if the input value has reached 2 characters (HH)
+            if (inputValue.length === 2 && !inputValue.includes(":")) {
+              // Add the colon ':' after the HH part
+              event.target.value = inputValue + ":";
+            }
+          });
         });
-    });
+      });
     </script>
 
     <!-- getting value from sheet -->
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var proxyUrl = "https://allorigins.win/get?url=";
+        var targetUrl =
+          "https://script.google.com/macros/s/AKfycby6x3KiQ4H4fEgFbUSlyG5xzhLCPHPOPRI2JjNTLfDRBLJAJQwBumfKcMOSH_PV4id58Q/exec";
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var cellValue = xhr.responseText;
+            document.getElementById("sheetValue").textContent = cellValue;
+          }
+        };
+        xhr.open("GET", proxyUrl + targetUrl, true);
+        xhr.send();
+      });
+    </script>
+    <!-- <script>
       document.addEventListener("DOMContentLoaded", function () {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
@@ -835,6 +847,6 @@
         );
         xhr.send();
       });
-    </script>
+    </script> -->
   </body>
 </html>
