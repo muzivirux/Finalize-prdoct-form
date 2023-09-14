@@ -20,7 +20,9 @@
     <div id="line"></div>
     <form id="FinishedproductForm">
       <!-- Wapda -->
-
+      <p>
+        Value from Google Sheet: <input type="text" id="sheetValue" readonly />
+      </p>
       <!-- second three -->
       <div class="section">
         <h2>Finished Product Status</h2>
@@ -792,6 +794,24 @@
           spinnerContainer.style.display = "none";
           hideModal();
         }
+      });
+    </script>
+
+    <!-- getting value from sheet -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            document.getElementById("sheetValue").textContent = data;
+          }
+        };
+        xhr.open(
+          "GET",
+          "https://script.google.com/macros/s/AKfycbxdWcCBydbfyYUUwJejqOKXAiJghTMjbRjlekpDlr_ldARdHqOigYkx5ZGFYap4pFBwUA/exec"
+        );
+        xhr.send();
       });
     </script>
   </body>
