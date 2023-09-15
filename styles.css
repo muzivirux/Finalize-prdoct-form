@@ -75,6 +75,17 @@ label {
   display: block;
   margin-top: 1rem;
 }
+
+.iframe-container {
+  position: relative;
+}
+
+.styled-iframe {
+  border: 1px solid #cccccc00;
+  background-color: #f8c807;
+  height: 4rem; /* Adjust the height as needed */
+  padding: 5px;
+}
 select,
 input[type="text"],
 input[type="number"],

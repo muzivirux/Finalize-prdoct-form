@@ -5,25 +5,55 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="icon" href="./images/favico.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--fetching google sheet value-->
+    <script>
+      // Function to fetch time value from Google Apps Script web app
+      // function fetchTimeFromGoogleSheets() {
+      //   fetch(
+      //     "https://script.google.com/macros/s/AKfycbwZKPCzN-Tx0SL3ajL5-UpjhYUvvztC23cz2r2jP-CFTwkJH56GpAasVFzioeka-pS9rA/exec"
+      //   )
+      //     .then((response) => response.text())
+      //     .then((data) => {
+      //       // Update the 'timeValueField' input with the fetched time value
+      //       const textField = document.getElementById("timeValueField");
+      //       if (textField) {
+      //         textField.value = data;
+      //       } else {
+      //         console.error('Element with ID "timeValueField" not found.');
+      //       }
+      //     })
+      //     .catch((error) => {
+      //       console.error("Error:", error);
+      //     });
+      // }
+
+      // // Call the function when the DOM is fully loaded
+      // document.addEventListener("DOMContentLoaded", fetchTimeFromGoogleSheets);
+    </script>
   </head>
 
   <body>
     <!-- Logo -->
     <div class="logo">
       <a href="https://rafiqfarmfoods.com/" target="_blank">
-        <img id="logoImg" src="/images/rff.png" />
+        <img id="logoImg" src="./images/rff.png" />
       </a>
     </div>
 
     <!-- Form -->
-    <h1>Finished product Form</h1>
+    <h1>Finished Product Form</h1>
     <div id="line"></div>
     <form id="FinishedproductForm">
       <!-- Wapda -->
-      <!-- <p>
-        Value from Google Sheet: <input type="text" id="sheetValue" readonly />
-      </p> -->
-      <p>Value from Google Sheet: <span id="sheetValue"></span></p>
+      <!-- <input type="text" id="timeValue" readonly /> -->
+
+      <iframe
+        class="styled-iframe"
+        src="https://script.google.com/macros/s/AKfycbw3eBkyDM2oK3g62z5m0Tbe5U0HUuGdsUN2IDe9TI5AlkJCO-JXXJSThUc56vFYIAKD9w/exec"
+        scrolling="no"
+      ></iframe>
+
       <!-- second three -->
       <div class="section">
         <h2>Finished Product Status</h2>
@@ -814,39 +844,5 @@
         });
       });
     </script>
-
-    <!-- getting value from sheet -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var proxyUrl = "https://allorigins.win/get?url=";
-        var targetUrl =
-          "https://script.google.com/macros/s/AKfycby6x3KiQ4H4fEgFbUSlyG5xzhLCPHPOPRI2JjNTLfDRBLJAJQwBumfKcMOSH_PV4id58Q/exec";
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4 && xhr.status === 200) {
-            var cellValue = xhr.responseText;
-            document.getElementById("sheetValue").textContent = cellValue;
-          }
-        };
-        xhr.open("GET", proxyUrl + targetUrl, true);
-        xhr.send();
-      });
-    </script>
-    <!-- <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4 && xhr.status === 200) {
-            var data = JSON.parse(xhr.responseText);
-            document.getElementById("sheetValue").textContent = data;
-          }
-        };
-        xhr.open(
-          "GET",
-          "https://script.google.com/macros/s/AKfycbxdWcCBydbfyYUUwJejqOKXAiJghTMjbRjlekpDlr_ldARdHqOigYkx5ZGFYap4pFBwUA/exec"
-        );
-        xhr.send();
-      });
-    </script> -->
   </body>
 </html>
