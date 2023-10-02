@@ -56,6 +56,147 @@
 
       <!-- second three -->
       <div class="section">
+        <h2>RM Details</h2>
+        <div class="section-content">
+          <div class="RSD">
+            <div class="wrapper">
+              <label for="RSD">LIR ref. </label>
+
+              <input
+                type="text"
+                id="gen1Units"
+                name="LIR ref."
+                placeholder="Enter LIR ref."
+              />
+            </div>
+            <div class="wrapper">
+              <label for="RSD">Vehicle </label>
+
+              <input
+                type="text"
+                id="gen1Units"
+                name="Vehicle"
+                placeholder="Enter Vehicle "
+              />
+            </div>
+
+            <div class="wrapper">
+              <label for="RSD">Feed start </label>
+              <input
+                type="text"
+                id="gen1Units"
+                name="Feed start"
+                placeholder="Enter Feed start "
+              />
+            </div>
+          </div>
+          <div class="RSD">
+            <div class="wrapper">
+              <label for="RSD">Feed Stop </label>
+              <input
+                type="text"
+                id="gen1Units"
+                name="Feed Stop"
+                placeholder="Enter Feed Stop"
+              />
+            </div>
+            <div class="wrapper">
+              <label for="RSD">Weight(kg) </label>
+              <input
+                type="number"
+                id="gen1Units"
+                name="Weight(kg)"
+                placeholder="Enter Weight(kg)"
+                step=".1"
+              />
+            </div>
+            <div class="wrapper">
+              <label for="RSD">Remarks</label>
+              <input
+                type="text"
+                id="gen1Units"
+                name="Remarks"
+                placeholder="Enter Remarks"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h2>Steam Peeler Log</h2>
+        <div class="section-content">
+          <div class="RSD">
+            <div class="wrapper">
+              <label for="RSD">Time (HH:MM)</label>
+              <input
+                type="text"
+                id="gen1diesel"
+                name="Time(HH:MM) peeler log"
+                placeholder="Enter Time"
+                min="0"
+                class="time-input"
+                id="availability-duration"
+              />
+            </div>
+            <div class="wrapper">
+              <label for="RSD">Batch Weight(kg)</label>
+              <input
+                type="number"
+                id="gen1diesel"
+                name="Batch Weight(kg)"
+                placeholder="Enter Batch Weight (kg)"
+                step=".1"
+              />
+            </div>
+
+            <div class="wrapper">
+              <label for="RSD">Speed(Hz)</label>
+              <input
+                type="number"
+                id="gen1diesel"
+                name="Speed(Hz) peeler log"
+                placeholder="Enter Speed(Hz)"
+                min="0"
+              />
+            </div>
+          </div>
+
+          <div class="RSD">
+            <div class="wrapper">
+              <label for="RSD">Time(sec)</label>
+              <input
+                type="number"
+                id="gen1diesel"
+                name="Time(sec) peeler log"
+                placeholder="Enter Time(sec)"
+                min="0"
+              />
+            </div>
+
+            <div class="wrapper">
+              <label for="RSD">Steam pressure</label>
+              <input
+                type="number"
+                id="gen1diesel"
+                name="Steam pressure peeler log"
+                placeholder="Enter Steam pressure"
+                min="0"
+              />
+            </div>
+            <div class="wrapper">
+              <label for="RSD">Remarks</label>
+              <input
+                type="text"
+                id="gen1diesel"
+                name="Remarks peeler log"
+                placeholder="Enter Remarks"
+                min="0"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
         <h2>Finished Product Status</h2>
         <div class="section-content">
           <div class="RSD">
@@ -76,7 +217,7 @@
                 min="0"
                 id="wapdatotal"
                 name="Total IQF packed(kg)"
-                rplaceholder="Enter Total IQF packed"
+                placeholder="Enter Total IQF packed"
                 step=".1"
               />
             </div>
@@ -117,12 +258,12 @@
             </div>
 
             <div class="wrapper">
-              <label for="RSD">Ending product waste</label>
+              <label for="RSD">Miscellaneous waste</label>
               <input
                 type="number"
                 id="wapdaoffpeakend"
-                name="Ending product waste"
-                placeholder="Enter Ending product"
+                name="miscellaneous product waste"
+                placeholder="Enter Misc waste"
                 min="0"
                 step=".1"
               />
@@ -144,16 +285,17 @@
                 id="gen1Units"
                 name="Batch Code for product holding log"
                 placeholder="Enter Batch Code"
+                pattern="[a-zA-Z0-9]+"
               />
             </div>
 
             <div class="wrapper">
-              <label for="RSD">Series</label>
+              <label for="RSD">Series C/P</label>
               <input
                 type="text"
                 id="gen1diesel"
-                name="Series"
-                placeholder="Enter Series"
+                name="Series C/P"
+                placeholder="Enter Series C/P"
               />
             </div>
             <div class="wrapper">
@@ -246,143 +388,93 @@
         </div>
       </div>
       <div class="section">
-        <h2>Steam Peeler Log</h2>
+        <h2 style="cursor: pointer">Oil Status @startup / shutdown</h2>
         <div class="section-content">
           <div class="RSD">
             <div class="wrapper">
-              <label for="RSD">Time (HH:MM)</label>
+              <label for="RSD">Fresh Initial</label>
               <input
                 type="text"
                 id="gen1diesel"
-                name="Time(HH:MM) peeler log"
-                placeholder="Enter Time"
-                min="0"
-                class="time-input"
-                id="availability-duration"
-              />
-            </div>
-            <div class="wrapper">
-              <label for="RSD">Gate open %</label>
-              <input
-                type="number"
-                id="gen1diesel"
-                name="Gate open % peeler log"
-                placeholder="Enter Gate open %"
+                name="Fresh Initial"
+                required
+                placeholder="Fresh Initial"
                 min="0"
               />
             </div>
 
             <div class="wrapper">
-              <label for="RSD">Speed(Hz)</label>
-              <input
-                type="number"
-                id="gen1diesel"
-                name="Speed(Hz) peeler log"
-                placeholder="Enter Speed(Hz)"
-                min="0"
-              />
-            </div>
-          </div>
-
-          <div class="RSD">
-            <div class="wrapper">
-              <label for="RSD">Time(sec)</label>
-              <input
-                type="number"
-                id="gen1diesel"
-                name="Time(sec) peeler log"
-                placeholder="Enter Time(sec)"
-                min="0"
-              />
-            </div>
-
-            <div class="wrapper">
-              <label for="RSD">Steam pressure</label>
-              <input
-                type="number"
-                id="gen1diesel"
-                name="Steam pressure peeler log"
-                placeholder="Enter Steam pressure"
-                min="0"
-              />
-            </div>
-            <div class="wrapper">
-              <label for="RSD">Remarks</label>
+              <label for="RSD">Fresh Final</label>
               <input
                 type="text"
                 id="gen1diesel"
-                name="Remarks peeler log"
-                placeholder="Enter Remarks"
+                name="Fresh Final"
+                required
+                placeholder="Enter Fresh Final"
                 min="0"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section">
-        <h2>RM Details</h2>
-        <div class="section-content">
-          <div class="RSD">
-            <div class="wrapper">
-              <label for="RSD">LIR ref. </label>
-
-              <input
-                type="text"
-                id="gen1Units"
-                name="LIR ref."
-                placeholder="Enter LIR ref."
-              />
-            </div>
-            <div class="wrapper">
-              <label for="RSD">Vehicle </label>
-
-              <input
-                type="text"
-                id="gen1Units"
-                name="Vehicle"
-                placeholder="Enter Vehicle "
-              />
-            </div>
-
-            <div class="wrapper">
-              <label for="RSD">Feed start </label>
-              <input
-                type="text"
-                id="gen1Units"
-                name="Feed start"
-                placeholder="Enter Feed start "
               />
             </div>
           </div>
           <div class="RSD">
             <div class="wrapper">
-              <label for="RSD">Feed Stop </label>
+              <label for="RSD">D-Tank Initial</label>
               <input
                 type="text"
-                id="gen1Units"
-                name="Feed Stop"
-                placeholder="Enter Feed Stop"
+                id="gen1diesel"
+                name="D-Tank Initial"
+                required
+                placeholder="Enter D-Tank Initial"
+                min="0"
               />
             </div>
+
             <div class="wrapper">
-              <label for="RSD">Weight(kg) </label>
-              <input
-                type="number"
-                id="gen1Units"
-                name="Weight(kg)"
-                placeholder="Enter Weight(kg)"
-                step=".1"
-              />
-            </div>
-            <div class="wrapper">
-              <label for="RSD">Remarks</label>
+              <label for="RSD">D-Tank Final</label>
               <input
                 type="text"
-                id="gen1Units"
-                name="Remarks"
-                placeholder="Enter Remarks"
+                id="gen1diesel"
+                name="D-Tank Final"
+                required
+                placeholder="Enter D-Tank Final"
+                min="0"
               />
             </div>
+          </div>
+          <div class="RSD">
+            <div class="wrapper">
+              <label for="RSD">Startup Fill</label>
+              <input
+                type="text"
+                id="gen1diesel"
+                name="Startup Fill"
+                required
+                placeholder="Enter Startup Fill"
+                min="0"
+              />
+            </div>
+
+            <div class="wrapper">
+              <label for="RSD">Used Return</label>
+              <input
+                type="text"
+                id="gen1diesel"
+                name="Used Return"
+                required
+                placeholder="Used Return"
+                min="0"
+              />
+            </div>
+          </div>
+          <div class="wrapper">
+            <label for="RSD">Used Oil FFA</label>
+            <input
+              type="text"
+              id="gen1diesel"
+              name="Used Oil FFA"
+              required
+              placeholder="Enter Used Oil FFA"
+              min="0"
+            />
           </div>
         </div>
       </div>
@@ -595,6 +687,11 @@
         "https://script.google.com/macros/s/AKfycbxxCBNeIApJdw2KodcPSpRosJfLuIhWoha-xf_657kGyl93_m4qVU4BQM-meFgg-b8B9Q/exec";
       const form = document.getElementById("FinishedproductForm");
 
+      <iframe
+        class="styled-iframe"
+        src="https://script.google.com/macros/s/AKfycbxQNzUsdrpCrmcrFV5EQycYEn5O2gyx4YzcldZn5NIcuDr_NS-CpK-kp6fsKJhqSFpL7g/exec"
+        scrolling="no"
+      ></iframe>;
       // modal javascript
       // Get the modal element, the close button, and the close button inside the modal
       const modal = document.getElementById("myModal");
