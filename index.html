@@ -1047,36 +1047,23 @@
           }
       });
   </script>
-  <script>
-    // Get the select element for "Size Change"
-    var sizeChangeSelect1 = document.getElementById("SizeChange");
+ <script>
+  // Get the select element for "Size Change"
+  var sizeChangeSelect1 = document.getElementById("SizeChange");
 
-    // Get the div containing additional fields
-    var additionalFields = document.getElementById("additionalFields");
+  // Get the div containing additional fields
+  var additionalFields = document.getElementById("additionalFields");
 
-    // Get the input elements inside the additionalFields div
-    var inputElements = additionalFields.querySelectorAll("input, select");
-
-    // Add an event listener to the "Size Change" select element
-    sizeChangeSelect1.addEventListener("change", function () {
-        if (sizeChangeSelect1.value === "Yes") {
-            // If "Yes" is selected, show the additional fields
-            additionalFields.style.display = "block";
-
-            // Add the "required" attribute to input elements
-            inputElements.forEach(function (element) {
-                element.required = true;
-            });
-        } else {
-            // If "No" is selected, hide the additional fields
-            additionalFields.style.display = "none";
-
-            // Remove the "required" attribute from input elements
-            inputElements.forEach(function (element) {
-                element.required = false;
-            });
-        }
-    });
+  // Add an event listener to the "Size Change" select element
+  sizeChangeSelect1.addEventListener("change", function () {
+      if (sizeChangeSelect1.value === "Yes") {
+          // If "Yes" is selected, show the additional fields
+          additionalFields.style.display = "block";
+      } else {
+          // If "No" is selected, hide the additional fields
+          additionalFields.style.display = "none";
+      }
+  });
 </script>
 
 
