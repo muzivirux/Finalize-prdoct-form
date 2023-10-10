@@ -659,73 +659,62 @@
           <div class="wrapper">
             <label for="SizeChange"><strong>Size change during shift</strong></label>
             <select id="SizeChange" name="Cut Size Change During Shift">
-
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-
-            </select>
-        </div>
-        <div class="wrapper">
-            <label for="CutSize"><strong>Cut Size</strong></label>
-            <select id="CutSize" name="Cut Size">
-                <option value="6x6 mm">6x6 mm</option>
-                <option value="9x9 mm">9x9 mm</option>
-                <option value="12x12 mm">12x12 mm</option>
-            </select>
-        </div>
-        <label><strong>Number of blades</strong></label>
-        <div class="RSD">
-            <select id="NumberOfBlades" name="Number of blades">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
-        </div>
-
-
-        <label><strong>Cutter Blades Replaced</strong></label>
-        <div class="RSD">
-            <select id="BladesReplaced" name="Cutter Blades Replaced">
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
-        </div>
-
-
-
-        <div class="RSD" id="BladesDetails">
-            <div class="wrapper">
-                <label for="Time">Time</label>
-                <input type="time" id="Time" name="Time If Cutter Blades Replaced">
+        
+            <div class="wrapper" id="additionalFields">
+                <label for="CutSize"><strong>Cut Size</strong></label>
+                <select id="CutSize" name="Cut Size">
+                    <option value="6x6 mm">6x6 mm</option>
+                    <option value="9x9 mm">9x9 mm</option>
+                    <option value="12x12 mm">12x12 mm</option>
+                </select>
+        
+                <label><strong>Number of blades</strong></label>
+                <select id="NumberOfBlades" name="Number of blades">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
             </div>
-
-            <div class="wrapper">
-                <label for="BladeCode">Blade Code</label>
-                <input type="text" id="BladeCode" name="Blade Code If Cutter Blades Replaced"
-                    placeholder="Enter Blade Code">
+                <label><strong>Cutter Blades Replaced</strong></label>
+                <select id="BladesReplaced" name="Cutter Blades Replaced">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+        
+                <div class="RSD" id="BladesDetails">
+                    <div class="wrapper">
+                        <label for="Time">Time</label>
+                        <input type="time" id="Time" name="Time If Cutter Blades Replaced">
+                    </div>
+        
+                    <div class="wrapper">
+                        <label for="BladeCode">Blade Code</label>
+                        <input type="text" id="BladeCode" name="Blade Code If Cutter Blades Replaced"
+                            placeholder="Enter Blade Code">
+                    </div>
+                </div>
+        
+                <div class="RSD" id="BladeTypeQuantity">
+                    <div class="wrapper">
+                        <label for="Quantity">Quantity</label>
+                        <input type="number" id="Quantity" name="Quantity If Cutter Blades Replaced"
+                            placeholder="Enter Quantity">
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="RSD" id="BladeTypeQuantity">
-
-
-            <div class="wrapper">
-                <label for="Quantity">Quantity</label>
-                <input type="number" id="Quantity" name="Quantity If Cutter Blades Replaced"
-                    placeholder="Enter Quantity">
-            </div>
-        </div>
-       
       </div>
       </div>
 
@@ -954,8 +943,8 @@
       });
     </script>
     <script>
-      // Function to validate the duration input
-      function validateDurationInput(inputElement) {
+    // Function to validate the duration input
+        function validateDurationInput(inputElement) {
         inputElement.addEventListener("change", function () {
           inputElement.setCustomValidity("");
           var value = inputElement.value;
@@ -1058,6 +1047,43 @@
           }
       });
   </script>
+  <script>
+    // Get the select element for "Size Change"
+    var sizeChangeSelect1 = document.getElementById("SizeChange");
+
+    // Get the div containing additional fields
+    var additionalFields = document.getElementById("additionalFields");
+
+    // Get the input elements inside the additionalFields div
+    var inputElements = additionalFields.querySelectorAll("input, select");
+
+    // Add an event listener to the "Size Change" select element
+    sizeChangeSelect1.addEventListener("change", function () {
+        if (sizeChangeSelect1.value === "Yes") {
+            // If "Yes" is selected, show the additional fields
+            additionalFields.style.display = "block";
+
+            // Add the "required" attribute to input elements
+            inputElements.forEach(function (element) {
+                element.required = true;
+            });
+        } else {
+            // If "No" is selected, hide the additional fields
+            additionalFields.style.display = "none";
+
+            // Remove the "required" attribute from input elements
+            inputElements.forEach(function (element) {
+                element.required = false;
+            });
+        }
+    });
+</script>
+
+
+
+
+ 
+
 
 
   </body>
