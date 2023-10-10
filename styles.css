@@ -127,7 +127,9 @@ input[type="submit"]:hover {
   color: #e88228;
 }
 /* CSS to hide the containers initially */
-
+.RSD {
+  display: none;
+}
 
 
 .RSD {
