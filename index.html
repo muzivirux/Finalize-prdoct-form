@@ -55,6 +55,7 @@
       ></iframe>
 
       <!-- second three -->
+      <!-- RM DETAIL -->
       <div class="section">
         <h2>RM Details</h2>
         <div class="section-content">
@@ -122,6 +123,9 @@
           </div>
         </div>
       </div>
+      <!-- END OF RM DETAIL -->
+
+      <!-- Steam Peeler Log -->
       <div class="section">
         <h2>Steam Peeler Log</h2>
         <div class="section-content">
@@ -196,6 +200,9 @@
           </div>
         </div>
       </div>
+      <!-- END OF Steam Peeler Log -->
+
+      <!-- Finsihed Product status Section -->
       <div class="section">
         <h2>Finished Product Status</h2>
         <div class="section-content">
@@ -272,7 +279,7 @@
         </div>
       </div>
 
-      <!-- third three -->
+      <!-- Product HOlding Log -->
       <div class="section">
         <h2>Product Holding Log</h2>
         <div class="section-content">
@@ -331,6 +338,9 @@
           </div>
         </div>
       </div>
+      <!-- END OF Product holding log -->
+
+      <!-- Line Downtime Log -->
       <div class="section">
         <h2>Line Downtime Log</h2>
         <div class="section-content">
@@ -387,6 +397,9 @@
           </div>
         </div>
       </div>
+      <!-- END OF Line downtime log -->
+
+      <!-- Oil status -->
       <div class="section">
         <h2 style="cursor: pointer">Oil Status @startup / shutdown</h2>
         <div class="section-content">
@@ -397,7 +410,6 @@
                 type="text"
                 id="gen1diesel"
                 name="Fresh Initial"
-                required
                 placeholder="Fresh Initial"
                 min="0"
               />
@@ -409,12 +421,12 @@
                 type="text"
                 id="gen1diesel"
                 name="Fresh Final"
-                required
                 placeholder="Enter Fresh Final"
                 min="0"
               />
             </div>
           </div>
+
           <div class="RSD">
             <div class="wrapper">
               <label for="RSD">D-Tank Initial</label>
@@ -422,7 +434,6 @@
                 type="text"
                 id="gen1diesel"
                 name="D-Tank Initial"
-                required
                 placeholder="Enter D-Tank Initial"
                 min="0"
               />
@@ -434,7 +445,6 @@
                 type="text"
                 id="gen1diesel"
                 name="D-Tank Final"
-                required
                 placeholder="Enter D-Tank Final"
                 min="0"
               />
@@ -447,7 +457,6 @@
                 type="text"
                 id="gen1diesel"
                 name="Startup Fill"
-                required
                 placeholder="Enter Startup Fill"
                 min="0"
               />
@@ -459,7 +468,6 @@
                 type="text"
                 id="gen1diesel"
                 name="Used Return"
-                required
                 placeholder="Used Return"
                 min="0"
               />
@@ -471,13 +479,13 @@
               type="text"
               id="gen1diesel"
               name="Used Oil FFA"
-              required
               placeholder="Enter Used Oil FFA"
               min="0"
             />
           </div>
         </div>
       </div>
+      <!-- END OF Oil status -->
 
       <div class="section">
         <h2>Equipment Parameters</h2>
@@ -653,70 +661,84 @@
           </div>
         </div>
       </div>
+
+      <!-- Cut size section -->
       <div class="section">
         <h2 style="cursor: pointer">Cut Size</h2>
         <div class="section-content">
           <div class="wrapper">
-            <label for="SizeChange"><strong>Size change during shift</strong></label>
+            <label for="SizeChange"
+              ><strong>Size change during shift</strong></label
+            >
             <select id="SizeChange" name="Cut Size Change During Shift">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+              <!-- <option value="">Did Cut Size chanded during Shift?</option> -->
+              <option value="Yes">Yes</option>
             </select>
-        
+
             <div class="wrapper" id="additionalFields">
-                <label for="CutSize"><strong>Cut Size</strong></label>
-                <select id="CutSize" name="Cut Size">
-                    <option value="6x6 mm">6x6 mm</option>
-                    <option value="9x9 mm">9x9 mm</option>
-                    <option value="12x12 mm">12x12 mm</option>
-                </select>
-        
-                <label><strong>Number of blades</strong></label>
-                <select id="NumberOfBlades" name="Number of blades">
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
+              <label for="CutSize"><strong>Cut Size</strong></label>
+              <select id="CutSize" name="Cut Size">
+                <option value="6x6 mm">6x6 mm</option>
+                <option value="9x9 mm">9x9 mm</option>
+                <option value="12x12 mm">12x12 mm</option>
+              </select>
+
+              <label><strong>Number of blades</strong></label>
+              <select id="NumberOfBlades" name="Number of blades">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
             </div>
-                <label><strong>Cutter Blades Replaced</strong></label>
-                <select id="BladesReplaced" name="Cutter Blades Replaced">
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-        
-                <div class="RSD" id="BladesDetails">
-                    <div class="wrapper">
-                        <label for="Time">Time</label>
-                        <input type="time" id="Time" name="Time If Cutter Blades Replaced">
-                    </div>
-        
-                    <div class="wrapper">
-                        <label for="BladeCode">Blade Code</label>
-                        <input type="text" id="BladeCode" name="Blade Code If Cutter Blades Replaced"
-                            placeholder="Enter Blade Code">
-                    </div>
-                </div>
-        
-                <div class="RSD" id="BladeTypeQuantity">
-                    <div class="wrapper">
-                        <label for="Quantity">Quantity</label>
-                        <input type="number" id="Quantity" name="Quantity If Cutter Blades Replaced"
-                            placeholder="Enter Quantity">
-                    </div>
-                </div>
+            <label><strong>Cutter Blades Replaced</strong></label>
+            <select id="BladesReplaced" name="Cutter Blades Replaced">
+              <!-- <option value="">Did Cutter Bades Replaced?</option> -->
+              <option value="Yes">Yes</option>
+            </select>
+
+            <div class="RSD" id="BladesDetails">
+              <div class="wrapper">
+                <label for="Time">Time</label>
+                <input
+                  type="time"
+                  id="Time"
+                  name="Time If Cutter Blades Replaced"
+                />
+              </div>
+
+              <div class="wrapper">
+                <label for="BladeCode">Blade Code</label>
+                <input
+                  type="text"
+                  id="BladeCode"
+                  name="Blade Code If Cutter Blades Replaced"
+                  placeholder="Enter Blade Code"
+                />
+              </div>
+              <div class="wrapper">
+                <label for="Quantity">Quantity</label>
+                <input
+                  type="number"
+                  id="Quantity"
+                  name="Quantity If Cutter Blades Replaced"
+                  placeholder="Enter Quantity"
+                />
+              </div>
             </div>
+          </div>
+        </div>
       </div>
-      </div>
+      <!-- END OF Cut size section -->
 
       <input type="submit" value="Submit" />
     </form>
@@ -751,11 +773,6 @@
         "https://script.google.com/macros/s/AKfycbxxCBNeIApJdw2KodcPSpRosJfLuIhWoha-xf_657kGyl93_m4qVU4BQM-meFgg-b8B9Q/exec";
       const form = document.getElementById("FinishedproductForm");
 
-      <iframe
-        class="styled-iframe"
-        src="https://script.google.com/macros/s/AKfycbxQNzUsdrpCrmcrFV5EQycYEn5O2gyx4YzcldZn5NIcuDr_NS-CpK-kp6fsKJhqSFpL7g/exec"
-        scrolling="no"
-      ></iframe>;
       // modal javascript
       // Get the modal element, the close button, and the close button inside the modal
       const modal = document.getElementById("myModal");
@@ -943,8 +960,8 @@
       });
     </script>
     <script>
-    // Function to validate the duration input
-        function validateDurationInput(inputElement) {
+      // Function to validate the duration input
+      function validateDurationInput(inputElement) {
         inputElement.addEventListener("change", function () {
           inputElement.setCustomValidity("");
           var value = inputElement.value;
@@ -1005,73 +1022,5 @@
         });
       });
     </script>
-     <script>
-      const cutSizeSelect = document.getElementById("CutSize");
-      const sizeChangeSelect = document.getElementById("SizeChange");
-      const bladesReplacedSelect = document.getElementById("BladesReplaced");
-      const bladesDetailsDiv = document.getElementById("BladesDetails");
-      const bladeTypeQuantityDiv = document.getElementById("BladeTypeQuantity");
-      const timeInput = document.getElementById("Time");
-      const bladeCodeInput = document.getElementById("BladeCode");
-      const bladeTypeInput = document.getElementById("BladeType");
-      const quantityInput = document.getElementById("Quantity");
-
-      // Function to toggle the 'required' attribute based on visibility
-      function toggleRequired(element, isVisible) {
-          if (isVisible) {
-              element.setAttribute("required", "required");
-          } else {
-              element.removeAttribute("required");
-          }
-      }
-
-
-
-      bladesReplacedSelect.addEventListener("change", () => {
-          if (bladesReplacedSelect.value === "Yes") {
-              // Show the details for cutter blades replaced
-              bladesDetailsDiv.style.display = "block";
-              bladeTypeQuantityDiv.style.display = "block";
-              toggleRequired(timeInput, true);
-              toggleRequired(bladeCodeInput, true);
-              toggleRequired(bladeTypeInput, true);
-              toggleRequired(quantityInput, true);
-          } else {
-              // Hide the details if blades were not replaced
-              bladesDetailsDiv.style.display = "none";
-              bladeTypeQuantityDiv.style.display = "none";
-              toggleRequired(timeInput, false);
-              toggleRequired(bladeCodeInput, false);
-              toggleRequired(bladeTypeInput, false);
-              toggleRequired(quantityInput, false);
-          }
-      });
-  </script>
- <script>
-  // Get the select element for "Size Change"
-  var sizeChangeSelect1 = document.getElementById("SizeChange");
-
-  // Get the div containing additional fields
-  var additionalFields = document.getElementById("additionalFields");
-
-  // Add an event listener to the "Size Change" select element
-  sizeChangeSelect1.addEventListener("change", function () {
-      if (sizeChangeSelect1.value === "Yes") {
-          // If "Yes" is selected, show the additional fields
-          additionalFields.style.display = "block";
-      } else {
-          // If "No" is selected, hide the additional fields
-          additionalFields.style.display = "none";
-      }
-  });
-</script>
-
-
-
-
- 
-
-
-
   </body>
 </html>
