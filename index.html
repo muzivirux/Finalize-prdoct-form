@@ -494,10 +494,11 @@
             <div class="wrapper">
               <label for="RSD">Inspection Time</label>
               <input
-                type="time"
+                type="text"
+                class="time-input"
                 id="gen1Units"
                 name="Inspection Time"
-                placeholder="Enter Inspection Time "
+                placeholder="HH:MM"
               />
             </div>
 
@@ -512,7 +513,7 @@
             </div>
           </div>
 
-          <h2>Blancher-1</h2>
+          <h3>Blancher-1</h3>
 
           <div class="RSD">
             <div class="wrapper">
@@ -549,7 +550,7 @@
             </div>
           </div>
 
-          <h2>Blancher-2</h2>
+          <h3>Blancher-2</h3>
 
           <div class="RSD">
             <div class="wrapper">
@@ -586,7 +587,7 @@
             </div>
           </div>
 
-          <h2>Dryer</h2>
+          <h3>Dryer</h3>
 
           <div class="RSD">
             <div class="wrapper">
@@ -623,7 +624,7 @@
             </div>
           </div>
 
-          <h2>Fryer</h2>
+          <h3>Fryer</h3>
 
           <div class="RSD">
             <div class="wrapper">
@@ -671,14 +672,14 @@
               ><strong>Size change during shift</strong></label
             >
             <select id="SizeChange" name="Cut Size Change During Shift">
-               <option value=""></option> 
+              <option value="">Please select Yes</option>
               <option value="Yes">Yes</option>
             </select>
 
             <div class="wrapper" id="additionalFields">
               <label for="CutSize"><strong>Cut Size</strong></label>
               <select id="CutSize" name="Cut Size">
-                <option value="" >Select cut size</option>
+                <option value="">Select cut size</option>
                 <option value="6x6 mm">6x6 mm</option>
                 <option value="9x9 mm">9x9 mm</option>
                 <option value="12x12 mm">12x12 mm</option>
@@ -686,8 +687,7 @@
 
               <label><strong>Number of blades</strong></label>
               <select id="NumberOfBlades" name="Number of blades">
-                <option value=""></option> 
-                <option value="0">0</option>
+                <option value="">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -704,7 +704,7 @@
             </div>
             <label><strong>Cutter Blades Replaced</strong></label>
             <select id="BladesReplaced" name="Cutter Blades Replaced">
-              <option value=""></option> 
+              <option value="">Please select Yes</option>
               <option value="Yes">Yes</option>
             </select>
 
@@ -712,13 +712,14 @@
               <div class="wrapper">
                 <label for="Time">Time</label>
                 <input
-                  type="time"
+                  type="text"
+                  class="time-input"
                   id="Time"
+                  placeholder="HH:MM"
                   name="Time If Cutter Blades Replaced"
                 />
               </div>
 
-             
               <div class="wrapper">
                 <label for="Batch Code">Batch Code</label>
                 <input
@@ -728,7 +729,6 @@
                   placeholder="Enter Batch Code"
                 />
               </div>
-
             </div>
             <div class="wrapper">
               <label for="BladeCode">Blade Code</label>
