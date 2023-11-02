@@ -502,12 +502,12 @@
             </div>
 
             <div class="wrapper">
-              <label for="RSD">Hopper speed(Hz)</label>
+              <label for="RSD">Brush Roller Auger(Hz)</label>
               <input
                 type="number"
                 id="gen1Units"
-                name="Hopper speed(Hz)"
-                placeholder="Enter Hopper speed(Hz)"
+                name="Brush Roller Auger(Hz)"
+                placeholder="Brush Roller Auger(Hz)"
               />
             </div>
           </div>
@@ -526,12 +526,12 @@
             </div>
 
             <div class="wrapper">
-              <label for="RSD">Temperature(^C)</label>
+              <label for="RSD">Temperature(°C)</label>
               <input
                 type="number"
                 id="gen1Units"
-                name="Temperature(^C) for Blancher-1"
-                placeholder="Enter Temperature(^C)"
+                name="Temperature(°C) for Blancher-1"
+                placeholder="Enter Temperature(°C)"
               />
             </div>
           </div>
@@ -563,12 +563,12 @@
             </div>
 
             <div class="wrapper">
-              <label for="RSD">Temperature(^C)</label>
+              <label for="RSD">Temperature(°C)</label>
               <input
                 type="number"
                 id="gen1Units"
-                name="Temperature(^C) for Blancher-2"
-                placeholder="Enter Temperature(^C)"
+                name="Temperature(°C) for Blancher-2"
+                placeholder="Enter Temperature(°C)"
               />
             </div>
           </div>
@@ -600,12 +600,12 @@
             </div>
 
             <div class="wrapper">
-              <label for="RSD">Temperature(^C)</label>
+              <label for="RSD">Temperature(°C)</label>
               <input
                 type="number"
                 id="gen1Units"
-                name="Temperature(^C) for Dryer"
-                placeholder="Enter Temperature(^C)"
+                name="Temperature(°C) for Dryer"
+                placeholder="Enter Temperature(°C)"
               />
             </div>
           </div>
@@ -637,12 +637,12 @@
             </div>
 
             <div class="wrapper">
-              <label for="RSD">Temperature(^C)</label>
+              <label for="RSD">Temperature(°C)</label>
               <input
                 type="number"
                 id="gen1Units"
-                name="Temperature(^C) for Fryer"
-                placeholder="Enter Temperature(^C)"
+                name="Temperature(°C) for Fryer"
+                placeholder="Enter Temperature(°C)"
               />
             </div>
           </div>
@@ -671,7 +671,7 @@
               ><strong>Size change during shift</strong></label
             >
             <select id="SizeChange" name="Cut Size Change During Shift">
-               <option value=""></option> 
+               <option value="No">No</option> 
               <option value="Yes">Yes</option>
             </select>
 
@@ -684,30 +684,29 @@
                 <option value="12x12 mm">12x12 mm</option>
               </select>
 
-              <label><strong>Number of blades</strong></label>
-              <select id="NumberOfBlades" name="Number of blades">
-                <option value=""></option> 
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
-            </div>
-            <label><strong>Cutter Blades Replaced</strong></label>
+              <label><strong>Cutter Blades Replaced</strong></label>
             <select id="BladesReplaced" name="Cutter Blades Replaced">
-              <option value=""></option> 
               <option value="Yes">Yes</option>
+              <option value="No">No</option> 
             </select>
-
+            <label><strong>Number of blades</strong></label>
+            <select id="NumberOfBlades" name="Number of blades">
+              <option value=""></option> 
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </div>
             <div class="RSD" id="BladesDetails">
               <div class="wrapper">
                 <label for="Time">Time</label>
@@ -720,16 +719,17 @@
 
              
               <div class="wrapper">
-                <label for="Batch Code">Batch Code</label>
+                <label for="BatchCode">Batch Code</label>
                 <input
                   type="number"
-                  id="Batch Code"
+                  id="BatchCode"
                   name="Batch Code for cut size"
                   placeholder="Enter Batch Code"
                 />
               </div>
-
             </div>
+
+              <div class="RSD" id="BladesDetails">
             <div class="wrapper">
               <label for="BladeCode">Blade Code</label>
               <textarea
@@ -739,8 +739,11 @@
                 placeholder="Enter each blade code in next line"
               ></textarea>
             </div>
+              </div>
+
+     
+          
           </div>
-        </div>
       </div>
       <!-- END OF Cut size section -->
 
@@ -1026,5 +1029,46 @@
         });
       });
     </script>
+     <script>
+      const bladesReplacedSelect = document.getElementById("BladesReplaced");
+      const bladesDetailsDiv = document.getElementById("BladesDetails");
+      const bladeTypeQuantityDiv = document.getElementById("BladeTypeQuantity");
+      const timeInput = document.getElementById("Time");
+      const bladeCodeInput = document.getElementById("BladeCode");
+      const BatchCodeInput = document.getElementById("BatchCode");
+      
+  
+      // Function to toggle the 'required' attribute based on visibility
+      function toggleRequired(element, isVisible) {
+          if (isVisible) {
+              element.setAttribute("required", "required");
+          } else {
+              element.removeAttribute("required");
+          }
+      }
+  
+     
+  
+  
+  
+      bladesReplacedSelect.addEventListener("change", () => {
+          if (bladesReplacedSelect.value === "Yes") {
+              // Show the details for cutter blades replaced
+              bladesDetailsDiv.style.display = "block";
+              bladeTypeQuantityDiv.style.display = "block";
+              toggleRequired(timeInput, true);
+              toggleRequired(bladeCodeInput, true);
+              toggleRequired(BatchCodeInput, true);
+              
+          } else {
+              // Hide the details if blades were not replaced
+              bladesDetailsDiv.style.display = "none";
+              bladeTypeQuantityDiv.style.display = "none";
+              toggleRequired(timeInput, false);
+              toggleRequired(bladeCodeInput, false);
+              toggleRequired(BatchCodeInput, false);
+          }
+      });
+  </script>
   </body>
 </html>
