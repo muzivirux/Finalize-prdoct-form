@@ -519,10 +519,11 @@
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
               <input
-                type="number"
+                type="text"
+                class="minutes-input"
                 id="gen1Units"
                 name="Time(min) for Blancher-1"
-                placeholder="Enter Time(min)"
+                placeholder="Enter Time(min) MM:SS"
               />
             </div>
 
@@ -556,10 +557,11 @@
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
               <input
-                type="number"
+                type="text"
+                class="minutes-input"
                 id="gen1Units"
                 name="Time(min) for Blancher-2"
-                placeholder="Enter Time(min)"
+                placeholder="Enter Time(min) MM:SS"
               />
             </div>
 
@@ -593,10 +595,11 @@
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
               <input
-                type="number"
+                type="text"
+                class="minutes-input"
                 id="gen1Units"
                 name="Time(min) for Dryer"
-                placeholder="Enter Time(min)"
+                placeholder="Enter Time(min) MM:SS"
               />
             </div>
 
@@ -630,10 +633,10 @@
             <div class="wrapper">
               <label for="RSD">Time(min)</label>
               <input
-                type="number"
+                type="text"
                 id="gen1Units"
                 name="Time(min) for Fryer"
-                placeholder="Enter Time(min)"
+                placeholder="Enter Time(min) MM:SS"
               />
             </div>
 
@@ -968,6 +971,8 @@
         }
       });
     </script>
+
+    <!-- for hours HH:MM -->
     <script>
       // Function to validate the duration input
       function validateDurationInput(inputElement) {
@@ -1031,46 +1036,69 @@
         });
       });
     </script>
-     <script>
-      const bladesReplacedSelect = document.getElementById("BladesReplaced");
-      const bladesDetailsDiv = document.getElementById("BladesDetails");
-      const bladeTypeQuantityDiv = document.getElementById("BladeTypeQuantity");
-      const timeInput = document.getElementById("Time");
-      const bladeCodeInput = document.getElementById("BladeCode");
-      const BatchCodeInput = document.getElementById("BatchCode");
-      
-  
-      // Function to toggle the 'required' attribute based on visibility
-      function toggleRequired(element, isVisible) {
-          if (isVisible) {
-              element.setAttribute("required", "required");
+
+    <!-- For minutes MM:SS -->
+    <script>
+      // Function to validate the duration input
+      function validateDurationInput(inputElement) {
+        inputElement.addEventListener("change", function () {
+          inputElement.setCustomValidity("");
+          var value = inputElement.value;
+          var timeParts = value.split(":");
+
+          // Check if the input is in the format MM:SS or MM
+          if (timeParts.length === 2) {
+            var minutes = parseInt(timeParts[0]);
+            var seconds = parseInt(timeParts[1]);
+
+            if (
+              isNaN(minutes) ||
+              isNaN(seconds) ||
+              seconds >= 60
+            ) {
+              inputElement.setCustomValidity(
+                "Please enter a valid duration in MM:SS format with seconds under 60."
+              );
+            }
+          } else if (timeParts.length === 1) {
+            var minutesOnly = parseInt(timeParts[0]);
+
+            if (isNaN(minutesOnly)) {
+              inputElement.setCustomValidity(
+                "Please enter a valid duration in MM:SS format."
+              );
+            }
           } else {
-              element.removeAttribute("required");
+            inputElement.setCustomValidity(
+              "Please enter a valid duration in MM:SS format or minutes only."
+            );
           }
+        });
       }
-  
-     
-  
-  
-  
-      bladesReplacedSelect.addEventListener("change", () => {
-          if (bladesReplacedSelect.value === "Yes") {
-              // Show the details for cutter blades replaced
-              bladesDetailsDiv.style.display = "block";
-              bladeTypeQuantityDiv.style.display = "block";
-              toggleRequired(timeInput, true);
-              toggleRequired(bladeCodeInput, true);
-              toggleRequired(BatchCodeInput, true);
-              
-          } else {
-              // Hide the details if blades were not replaced
-              bladesDetailsDiv.style.display = "none";
-              bladeTypeQuantityDiv.style.display = "none";
-              toggleRequired(timeInput, false);
-              toggleRequired(bladeCodeInput, false);
-              toggleRequired(BatchCodeInput, false);
-          }
+
+      // Get the input elements and validate them
+      var durationInputs = document.querySelectorAll(".minutes-input");
+      durationInputs.forEach(function (input) {
+        validateDurationInput(input);
       });
-  </script>
+
+      // Auto add colon : between MM and SS
+      document.addEventListener("DOMContentLoaded", function () {
+        const timeInputs = document.querySelectorAll(".minutes-input");
+
+        timeInputs.forEach(function (inputElement) {
+          inputElement.addEventListener("input", function (event) {
+            const inputValue = event.target.value.trim();
+
+            // Check if the input value has reached 2 characters (MM)
+            if (inputValue.length === 2 && !inputValue.includes(":")) {
+              // Add the colon ':' after the MM part
+              event.target.value = inputValue + ":";
+            }
+          });
+        });
+      });
+</script>
+
   </body>
 </html>
