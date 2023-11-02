@@ -675,11 +675,7 @@
               ><strong>Size change during shift</strong></label
             >
             <select id="SizeChange" name="Cut Size Change During Shift">
-<<<<<<< HEAD
                <option value="No">No</option> 
-=======
-              <option value="">Please select Yes</option>
->>>>>>> fe9b95440b5293e4fa352eb35694a2a25a5283f8
               <option value="Yes">Yes</option>
             </select>
 
@@ -692,31 +688,8 @@
                 <option value="12x12 mm">12x12 mm</option>
               </select>
 
-<<<<<<< HEAD
               <label><strong>Cutter Blades Replaced</strong></label>
             <select id="BladesReplaced" name="Cutter Blades Replaced">
-=======
-              <label><strong>Number of blades</strong></label>
-              <select id="NumberOfBlades" name="Number of blades">
-                <option value="">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
-            </div>
-            <label><strong>Cutter Blades Replaced</strong></label>
-            <select id="BladesReplaced" name="Cutter Blades Replaced">
-              <option value="">Please select Yes</option>
->>>>>>> fe9b95440b5293e4fa352eb35694a2a25a5283f8
               <option value="Yes">Yes</option>
               <option value="No">No</option> 
             </select>
@@ -1063,5 +1036,69 @@
         });
       });
     </script>
+
+    <!-- For minutes MM:SS -->
+    <script>
+      // Function to validate the duration input
+      function validateDurationInput(inputElement) {
+        inputElement.addEventListener("change", function () {
+          inputElement.setCustomValidity("");
+          var value = inputElement.value;
+          var timeParts = value.split(":");
+
+          // Check if the input is in the format MM:SS or MM
+          if (timeParts.length === 2) {
+            var minutes = parseInt(timeParts[0]);
+            var seconds = parseInt(timeParts[1]);
+
+            if (
+              isNaN(minutes) ||
+              isNaN(seconds) ||
+              seconds >= 60
+            ) {
+              inputElement.setCustomValidity(
+                "Please enter a valid duration in MM:SS format with seconds under 60."
+              );
+            }
+          } else if (timeParts.length === 1) {
+            var minutesOnly = parseInt(timeParts[0]);
+
+            if (isNaN(minutesOnly)) {
+              inputElement.setCustomValidity(
+                "Please enter a valid duration in MM:SS format."
+              );
+            }
+          } else {
+            inputElement.setCustomValidity(
+              "Please enter a valid duration in MM:SS format or minutes only."
+            );
+          }
+        });
+      }
+
+      // Get the input elements and validate them
+      var durationInputs = document.querySelectorAll(".minutes-input");
+      durationInputs.forEach(function (input) {
+        validateDurationInput(input);
+      });
+
+      // Auto add colon : between MM and SS
+      document.addEventListener("DOMContentLoaded", function () {
+        const timeInputs = document.querySelectorAll(".minutes-input");
+
+        timeInputs.forEach(function (inputElement) {
+          inputElement.addEventListener("input", function (event) {
+            const inputValue = event.target.value.trim();
+
+            // Check if the input value has reached 2 characters (MM)
+            if (inputValue.length === 2 && !inputValue.includes(":")) {
+              // Add the colon ':' after the MM part
+              event.target.value = inputValue + ":";
+            }
+          });
+        });
+      });
+</script>
+
   </body>
 </html>
