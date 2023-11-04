@@ -244,7 +244,7 @@
             <div class="wrapper">
               <label for="RSD">Waste(kg)</label>
               <input
-                type="number"
+                type="text"
                 id="wapdaoffpeakend"
                 name="Waste(kg)"
                 placeholder="Enter Waste (kg)"
@@ -474,7 +474,7 @@
             </div>
           </div>
           <div class="wrapper">
-            <label for="RSD">Used Oil FFA</label>
+            <label for="RSD">Used Oil TPM (%)</label>
             <input
               type="text"
               id="gen1diesel"
@@ -690,9 +690,11 @@
 
               <label><strong>Cutter Blades Replaced</strong></label>
             <select id="BladesReplaced" name="Cutter Blades Replaced">
+              <option value="">No</option> 
               <option value="Yes">Yes</option>
-              <option value="No">No</option> 
             </select>
+
+            <div id="cutterbladereplacedsec">
             <label><strong>Number of blades</strong></label>
             <select id="NumberOfBlades" name="Number of blades">
               <option value=""></option> 
@@ -710,8 +712,8 @@
               <option value="11">11</option>
               <option value="12">12</option>
             </select>
-          </div>
-            <div class="RSD" id="BladesDetails">
+          
+            <!-- <div class="RSD" id="BladesDetails"> -->
               <div class="wrapper">
                 <label for="Time">Time</label>
                 <input
@@ -723,18 +725,10 @@
                 />
               </div>
 
-              <div class="wrapper">
-                <label for="BatchCode">Batch Code</label>
-                <input
-                  type="number"
-                  id="BatchCode"
-                  name="Batch Code for cut size"
-                  placeholder="Enter Batch Code"
-                />
-              </div>
-            </div>
+             
+            <!-- </div> -->
 
-              <div class="RSD" id="BladesDetails">
+              <!-- <div class="RSD" id="BladesDetails"> -->
             <div class="wrapper">
               <label for="BladeCode">Blade Code</label>
               <textarea
@@ -744,14 +738,14 @@
                 placeholder="Enter each blade code seperated by comma i.e 12345, 12345"
               ></textarea>
             </div>
-              </div>
-
+              <!-- </div> -->
+            </div>
      
           
           </div>
       </div>
       <!-- END OF Cut size section -->
-
+</div>  
       <input type="submit" value="Submit" />
     </form>
 
@@ -1099,6 +1093,47 @@
         });
       });
 </script>
+
+<script>
+  const bladesReplacedSelect = document.getElementById("cutterbladereplacedsec");
+  // const bladesDetailsDiv = document.getElementById("BladesDetails");
+  // const timeInput = document.getElementById("Time");
+  // const bladeCodeInput = document.getElementById("BladeCode");
+
+
+  bladesReplacedSelect.style.display = "none";
+  // Function to toggle the 'required' attribute based on visibility
+  function toggleRequired(element, isVisible) {
+      if (isVisible) {
+          element.setAttribute("required", "required");
+      } else {
+          element.removeAttribute("required");
+      }
+  }
+
+ 
+
+
+
+  bladesReplacedSelect.addEventListener("change", () => {
+      if (bladesReplacedSelect.value === "Yes") {
+          // Show the details for cutter blades replaced
+          bladesReplacedSelect.style.display = "block";
+          // bladeTypeQuantityDiv.style.display = "block";
+          toggleRequired(bladesReplacedSelect, true);
+          // toggleRequired(bladeCodeInput, true);
+          // toggleRequired(BatchCodeInput, true);
+          
+      } else {
+          // Hide the details if blades were not replaced
+          bladesReplacedSelect.style.display = "none";
+          // bladeTypeQuantityDiv.style.display = "none";
+          toggleRequired(bladesReplacedSelect, false);
+          // toggleRequired(bladeCodeInput, false);
+          // toggleRequired(BatchCodeInput, false);
+      }
+  });
+  </script>
 
   </body>
 </html>
