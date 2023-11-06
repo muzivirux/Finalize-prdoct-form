@@ -154,7 +154,7 @@
             </div>
 
             <div class="wrapper">
-              <label for="RSD">Speed(Hz)</label>
+              <label for="RSD">Cycle Time (sec)</label>
               <input
                 type="number"
                 id="gen1diesel"
@@ -407,7 +407,7 @@
             <div class="wrapper">
               <label for="RSD">Fresh Initial</label>
               <input
-                type="text"
+                type="number"
                 id="gen1diesel"
                 name="Fresh Initial"
                 placeholder="Fresh Initial"
@@ -418,7 +418,7 @@
             <div class="wrapper">
               <label for="RSD">Fresh Final</label>
               <input
-                type="text"
+                type="number"
                 id="gen1diesel"
                 name="Fresh Final"
                 placeholder="Enter Fresh Final"
@@ -431,7 +431,7 @@
             <div class="wrapper">
               <label for="RSD">D-Tank Initial</label>
               <input
-                type="text"
+                type="number"
                 id="gen1diesel"
                 name="D-Tank Initial"
                 placeholder="Enter D-Tank Initial"
@@ -442,7 +442,7 @@
             <div class="wrapper">
               <label for="RSD">D-Tank Final</label>
               <input
-                type="text"
+                type="number"
                 id="gen1diesel"
                 name="D-Tank Final"
                 placeholder="Enter D-Tank Final"
@@ -454,7 +454,7 @@
             <div class="wrapper">
               <label for="RSD">Startup Fill</label>
               <input
-                type="text"
+                type="number"
                 id="gen1diesel"
                 name="Startup Fill"
                 placeholder="Enter Startup Fill"
@@ -465,7 +465,7 @@
             <div class="wrapper">
               <label for="RSD">Used Return</label>
               <input
-                type="text"
+                type="number"
                 id="gen1diesel"
                 name="Used Return"
                 placeholder="Used Return"
@@ -476,10 +476,10 @@
           <div class="wrapper">
             <label for="RSD">Used Oil TPM (%)</label>
             <input
-              type="text"
+              type="number"
               id="gen1diesel"
-              name="Used Oil FFA"
-              placeholder="Enter Used Oil FFA"
+              name="Used Oil TPM (%)"
+              placeholder="Enter Used Oil TPM"
               min="0"
             />
           </div>
@@ -596,10 +596,10 @@
               <label for="RSD">Time(min)</label>
               <input
                 type="text"
-                class="minutes-input"
+                class=""
                 id="gen1Units"
                 name="Time(min) for Dryer"
-                placeholder="Enter Time(min) MM:SS"
+                placeholder="Enter Time(min)"
               />
             </div>
 
@@ -675,7 +675,7 @@
               ><strong>Size change during shift</strong></label
             >
             <select id="SizeChange" name="Cut Size Change During Shift">
-               <option value="No">No</option> 
+              <option value="">No</option>
               <option value="Yes">Yes</option>
             </select>
 
@@ -687,33 +687,34 @@
                 <option value="9x9 mm">9x9 mm</option>
                 <option value="12x12 mm">12x12 mm</option>
               </select>
+            </div>
 
-              <label><strong>Cutter Blades Replaced</strong></label>
+            <label><strong>Cutter Blades Replaced</strong></label>
             <select id="BladesReplaced" name="Cutter Blades Replaced">
-              <option value="">No</option> 
+              <option value="">No</option>
               <option value="Yes">Yes</option>
             </select>
 
             <div id="cutterbladereplacedsec">
-            <label><strong>Number of blades</strong></label>
-            <select id="NumberOfBlades" name="Number of blades">
-              <option value=""></option> 
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-          
-            <!-- <div class="RSD" id="BladesDetails"> -->
+              <label><strong>Number of blades</strong></label>
+              <select id="NumberOfBlades" name="Number of blades">
+                <option value=""></option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+
+              <!-- <div class="RSD" id="BladesDetails"> -->
               <div class="wrapper">
                 <label for="Time">Time</label>
                 <input
@@ -725,27 +726,24 @@
                 />
               </div>
 
-             
-            <!-- </div> -->
+              <!-- </div> -->
 
               <!-- <div class="RSD" id="BladesDetails"> -->
-            <div class="wrapper">
-              <label for="BladeCode">Blade Code</label>
-              <textarea
-                rows="2"
-                id="BladeCode"
-                name="Blade Code If Cutter Blades Replaced"
-                placeholder="Enter each blade code seperated by comma i.e 12345, 12345"
-              ></textarea>
-            </div>
+              <div class="wrapper">
+                <label for="BladeCode">Blade Code</label>
+                <textarea
+                  rows="2"
+                  id="BladeCode"
+                  name="Blade Code If Cutter Blades Replaced"
+                  placeholder="Enter each blade code seperated by comma i.e 12345, 12345"
+                ></textarea>
+              </div>
               <!-- </div> -->
             </div>
-     
-          
           </div>
+          <!-- END OF Cut size section -->
+        </div>
       </div>
-      <!-- END OF Cut size section -->
-</div>  
       <input type="submit" value="Submit" />
     </form>
 
@@ -851,7 +849,6 @@
 
     <!-- check time validations -->
     <script>
-      // Get the input element
       var durationInput = document.getElementById("availability-duration");
       durationInput.addEventListener("change", function () {
         durationInput.setCustomValidity("");
@@ -934,38 +931,6 @@
         toggleContentAndRequired();
       });
     </script>
-    <script>
-      // Function to check if all input fields are hidden
-      function areAllFieldsHidden() {
-        const sections = document.querySelectorAll(".section");
-        return [...sections].every((section) => {
-          const content = section.querySelector(".section-content");
-          return content.style.display === "none";
-        });
-      }
-
-      // Function to hide the modal
-      function hideModal() {
-        const modal = document.getElementById("myModal");
-        modal.style.display = "none";
-      }
-
-      // Add an event listener for when the form is submitted
-      document.querySelector("form").addEventListener("submit", function (e) {
-        if (areAllFieldsHidden()) {
-          e.preventDefault(); // Prevent form submission
-          alert(
-            "Please fill in at least one field before submitting the form."
-          );
-
-          // Hide the spinner, message, and modal
-          const spinnerContainer = document.querySelector(".spinner-container");
-          spinnerContainer.style.display = "none";
-          hideModal();
-        }
-      });
-    </script>
-
     <!-- for hours HH:MM -->
     <script>
       // Function to validate the duration input
@@ -1045,11 +1010,7 @@
             var minutes = parseInt(timeParts[0]);
             var seconds = parseInt(timeParts[1]);
 
-            if (
-              isNaN(minutes) ||
-              isNaN(seconds) ||
-              seconds >= 60
-            ) {
+            if (isNaN(minutes) || isNaN(seconds) || seconds >= 60) {
               inputElement.setCustomValidity(
                 "Please enter a valid duration in MM:SS format with seconds under 60."
               );
@@ -1092,48 +1053,39 @@
           });
         });
       });
-</script>
+    </script>
 
-<script>
-  const bladesReplacedSelect = document.getElementById("cutterbladereplacedsec");
-  // const bladesDetailsDiv = document.getElementById("BladesDetails");
-  // const timeInput = document.getElementById("Time");
-  // const bladeCodeInput = document.getElementById("BladeCode");
+    <!-- cutter blade function -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sizeChangeDropdown = document.getElementById("SizeChange");
+        const additionalFields = document.getElementById("additionalFields");
 
+        additionalFields.style.display = "none";
+        sizeChangeDropdown.addEventListener("change", function () {
+          if (sizeChangeDropdown.value === "Yes") {
+            additionalFields.style.display = "block";
+          } else {
+            additionalFields.style.display = "none";
+          }
+        });
+      });
 
-  bladesReplacedSelect.style.display = "none";
-  // Function to toggle the 'required' attribute based on visibility
-  function toggleRequired(element, isVisible) {
-      if (isVisible) {
-          element.setAttribute("required", "required");
-      } else {
-          element.removeAttribute("required");
-      }
-  }
+      document.addEventListener("DOMContentLoaded", function () {
+        const isBladeReplaced = document.getElementById("BladesReplaced");
+        const cutterBladeReplaced = document.getElementById(
+          "cutterbladereplacedsec"
+        );
 
- 
-
-
-
-  bladesReplacedSelect.addEventListener("change", () => {
-      if (bladesReplacedSelect.value === "Yes") {
-          // Show the details for cutter blades replaced
-          bladesReplacedSelect.style.display = "block";
-          // bladeTypeQuantityDiv.style.display = "block";
-          toggleRequired(bladesReplacedSelect, true);
-          // toggleRequired(bladeCodeInput, true);
-          // toggleRequired(BatchCodeInput, true);
-          
-      } else {
-          // Hide the details if blades were not replaced
-          bladesReplacedSelect.style.display = "none";
-          // bladeTypeQuantityDiv.style.display = "none";
-          toggleRequired(bladesReplacedSelect, false);
-          // toggleRequired(bladeCodeInput, false);
-          // toggleRequired(BatchCodeInput, false);
-      }
-  });
-  </script>
-
+        cutterBladeReplaced.style.display = "none";
+        isBladeReplaced.addEventListener("change", function () {
+          if (isBladeReplaced.value === "Yes") {
+            cutterBladeReplaced.style.display = "block";
+          } else {
+            cutterBladeReplaced.style.display = "none";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
