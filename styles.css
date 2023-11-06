@@ -13,7 +13,7 @@ body::before {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #f8c80798;
+  /* background-color: #f8c80798; */
   clip-path: ellipse(50% 30% at 50% 0%);
   animation: bgAnimation 1s forwards;
   z-index: -1;
